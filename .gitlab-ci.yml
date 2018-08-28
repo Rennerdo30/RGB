@@ -3,7 +3,7 @@ variables:
 before_script:
   - echo "starting build for %PROJECT_NAME%"
   - echo "Restoring NuGet Packages..."
-  - D:\dev\runner\nuget restore "%PROJECT_NAME%.sln"
+  - D:\dev\runner\nuget restore "%PROJECT_NAME%.sln" -Source https://www.myget.org/F/rgb_net/api/v3/index.json
 stages:
   - build
   - test
