@@ -20,12 +20,20 @@ namespace RGB
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Currently modes are supported: rainbow and sync");
+            Console.WriteLine("For rainbow, just run the exe");
+            Console.WriteLine("For sync, add the argument sync -> eg. 'RGB.exe sync'");
+
             RGBSurface surface = RGBSurface.Instance;
 
             bool sync = false;
             if (args != null && args.Length > 0 && args[0] == "sync")
             {
                 sync = true;
+                Console.WriteLine("Starting sync mode...");
+            } else
+            {
+                Console.WriteLine("Starting rainbow mode...");
             }
 
 
@@ -45,10 +53,10 @@ namespace RGB
             surface.AlignDevices();
 
 
-            Console.WriteLine(surface.Devices.Count());
+            Console.WriteLine($"Found {surface.Devices.Count()} devices!");
             foreach (var dev in surface.Devices)
             {
-                Console.WriteLine(dev.DeviceInfo.DeviceName);
+                Console.WriteLine($"dev: {dev.DeviceInfo.DeviceName}");
             }
 
             if (sync)
